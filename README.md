@@ -9,3 +9,18 @@
 - Hive: Table >> SQL >> insert
 - Spark: RDD/DF/DS >> Transformation >> Action/Output
 - Flink: Source >> Transformation >> Sink
+### DataStream
+```java
+// get execution environment
+SStreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
+// ... transformation
+// execute
+env.execute("your job name");
+```
+### DataSet
+```java
+// get execution environment
+ExecutionEnvironment env = ExecutionEnvironment.getExecutionEnvironment();
+// ... transformation & sink
+// no need to execute env
+```

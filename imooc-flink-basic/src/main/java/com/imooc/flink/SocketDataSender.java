@@ -10,7 +10,7 @@ import java.net.Socket;
  *
  * @author jucheng
  */
-public class DataSender {
+public class SocketDataSender {
 
     public static void main(String[] args) throws IOException {
         ServerSocket serverSocket = new ServerSocket(8080);
