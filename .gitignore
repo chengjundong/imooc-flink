@@ -6,6 +6,7 @@ target/
 .gradle/
 bin/
 gradle/
+**dependency-reduced-pom.xml
 
 ### STS ###
 .apt_generated

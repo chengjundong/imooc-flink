@@ -9,6 +9,13 @@
 - Hive: Table >> SQL >> insert
 - Spark: RDD/DF/DS >> Transformation >> Action/Output
 - Flink: Source >> Transformation >> Sink
+### 编程套路
+[Anatomy of Flink program](https://nightlies.apache.org/flink/flink-docs-release-1.14/docs/dev/datastream/overview/#anatomy-of-a-flink-program)
+1. Obtain an execution environment,
+2. Load/create the initial data,
+3. Specify transformations on this data,
+4. Specify where to put the results of your computations,
+5. Trigger the program execution
 ### DataStream
 ```java
 // get execution environment
@@ -24,3 +31,12 @@ ExecutionEnvironment env = ExecutionEnvironment.getExecutionEnvironment();
 // ... transformation & sink
 // no need to execute env
 ```
+
+## Deployment
+### Infrastructure
+主从结构
+1. JobManager；主节点；高可用，HA；负责调度
+2. TaskManager；从节点；多个节点；负责运行作业
+### Run Flink in Docker
+[Run flink in Docker](https://ci.apache.org/projects/flink/flink-docs-master/docs/deployment/resource-providers/standalone/docker/)
+
