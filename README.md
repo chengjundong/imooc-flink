@@ -39,4 +39,11 @@ ExecutionEnvironment env = ExecutionEnvironment.getExecutionEnvironment();
 2. TaskManager；从节点；多个节点；负责运行作业
 ### Run Flink in Docker
 [Run flink in Docker](https://ci.apache.org/projects/flink/flink-docs-master/docs/deployment/resource-providers/standalone/docker/)
-
+### Run Kafka
+go to kafka-docker folder  
+run `docker-compose up`  
+you might need change the `KAFKA_ADVERTISED_HOST_NAME`, use `ping host.docker.internal`  
+start kafka manager  
+`docker run -it --rm -p 9000:9000 -e ZK_HOSTS="192.168.1.18:2181" -e APPLICATION_SECRET=letmein sheepkiller/kafka-manager`  
+ZK_HOSTS might be changed
+access kafka manager: http://192.168.1.18:9000/
