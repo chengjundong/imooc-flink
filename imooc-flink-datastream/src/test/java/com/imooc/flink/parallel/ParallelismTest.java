@@ -17,8 +17,7 @@ public class ParallelismTest {
 
         FilterOperator<Long> filteredSource = source.filter(l -> l % 3 == 0);
         System.out.println("filtered source parallelism: " + filteredSource.getParallelism());
+        // offline data, no need to call source.execute
         filteredSource.print();
-
-        env.execute("number sequence parallel job");
     }
 }
