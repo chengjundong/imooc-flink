@@ -88,3 +88,26 @@ ds12.map(new CoMapFunction<Integer, String, Boolean>() {
     }
 }).print();
 ```
+
+### Partitioner
+Flink支持自定义分区器，实现 `org.apache.flink.api.common.functions.Partitioner` 接口。
+```java
+public class WordCountPartitioner implements Partitioner<String> {
+
+    // 分区的id必须小于并行度设置，如并行度Parallelism为6，那么partition id的范围是 [0, 5]
+    private static Map<String, Integer> PARTITION = new HashMap<>() {
+        {
+            this.put("java", 1);
+            this.put("python", 2);
+            this.put("c++", 5);
+            this.put("golang", 3);
+            this.put("PHP", 4);
+        }
+    };
+
+    @Override
+    public int partition(String key, int numPartitions) {
+        return PARTITION.getOrDefault(key, 0);
+    }
+}
+```
