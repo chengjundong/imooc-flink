@@ -41,7 +41,7 @@ public class WordCountSource implements SourceFunction<String> {
 参考Repository中的代码
 ```java
 // data source connecting to postgreSQL
-com.imooc.flink.jdbc.DataSource
+com.imooc.flink.jdbc.DatabaseConnectionPool
 // word count data source, reading from data base and collected by source function
 com.imooc.flink.jdbc.DatabaseWordCountSource
 ```

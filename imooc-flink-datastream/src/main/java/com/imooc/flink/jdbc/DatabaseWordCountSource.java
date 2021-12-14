@@ -20,7 +20,7 @@ public class DatabaseWordCountSource implements ParallelSourceFunction<String> {
         for (; running; ) {
             int j = ThreadLocalRandom.current().nextInt(1, 6);
             String sql = String.format("SELECT * FROM flink_word_count WHERE id=%d;", j);
-            try (Connection connection = DataSource.INSTANCE.getConnection();
+            try (Connection connection = DatabaseConnectionPool.INSTANCE.getConnection();
                  PreparedStatement ps = connection.prepareStatement(sql, new String[]{"id", "value"});
                  ResultSet resultSet = ps.executeQuery()) {
                 if (resultSet.next()) {
