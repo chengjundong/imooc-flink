@@ -13,6 +13,7 @@
         <module>imooc-flink-datastream</module>
         <module>imooc-flink-sql</module>
         <module>imooc-flink-basic</module>
+        <module>imooc-flink-clickhouse</module>
     </modules>
 
     <properties>
@@ -29,6 +30,7 @@
         <dbcp2.version>2.9.0</dbcp2.version>
         <jedis.version>4.0.0</jedis.version>
         <junit.version>4.13.2</junit.version>
+        <junit.jupiter.version>5.8.2</junit.jupiter.version>
         <assertj.version>3.20.2</assertj.version>
     </properties>
 
@@ -100,6 +102,11 @@
                 <groupId>junit</groupId>
                 <artifactId>junit</artifactId>
                 <version>${junit.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.junit.jupiter</groupId>
+                <artifactId>junit-jupiter</artifactId>
+                <version>${junit.jupiter.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.assertj</groupId>
