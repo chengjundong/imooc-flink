@@ -111,3 +111,11 @@ public class WordCountPartitioner implements Partitioner<String> {
     }
 }
 ```
+## 自定义sink
+通过实现SinkFunction接口，可以自定义sink功能，并使用addSink加入流中作为sink算子。可以更好地支持定制化功能。
+```java
+// Redis data sink, using Jedis internally
+public class RedisSink extends AbstractRichFunction implements SinkFunction<Tuple2<String, Integer>>{}
+// PostgreSQL data sink, using JDBC + DBCP2 as DCP internally
+public class DatabaseWordCountSink extends AbstractRichFunction implements SinkFunction<Tuple2<String, Integer>>{}
+```

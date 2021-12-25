@@ -23,10 +23,11 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <flink.version>1.13.2</flink.version>
         <scala.binary.version>2.11</scala.binary.version>
-        <log4j.version>2.15.0</log4j.version>
+        <log4j.version>2.16.0</log4j.version>
         <jackson.version>2.13.0</jackson.version>
         <postgresql.jdbc.version>42.3.1</postgresql.jdbc.version>
         <dbcp2.version>2.9.0</dbcp2.version>
+        <jedis.version>4.0.0</jedis.version>
         <junit.version>4.13.2</junit.version>
         <assertj.version>3.20.2</assertj.version>
     </properties>
@@ -76,6 +77,12 @@
                 <groupId>org.apache.commons</groupId>
                 <artifactId>commons-dbcp2</artifactId>
                 <version>${dbcp2.version}</version>
+            </dependency>
+            <!-- redis -->
+            <dependency>
+                <groupId>redis.clients</groupId>
+                <artifactId>jedis</artifactId>
+                <version>${jedis.version}</version>
             </dependency>
             <!-- json -->
             <dependency>
