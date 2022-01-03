@@ -9,7 +9,8 @@ To install docker desktop, you might run into some issue if you are using Win 10
 ## 2 Pull image
 [yandex/clickhouse-server](https://hub.docker.com/r/yandex/clickhouse-server)  
 [yandex/clickhouse-client](https://hub.docker.com/r/yandex/clickhouse-client)  
-**You need use tag: 20.3.21.2** All steps in below are based on this tag, any other version like 21.x might fail. I have failed once when I use `latest` tag. (21.x)  
+**You need use tag: 20.x, I use 20.8.19.4**  
+All steps in below are based on this tag, any other version like 21.x might fail. I have failed once when I use `latest` tag. (21.x)  
 When I connect clickhouse-server by clickhouse-client, it shows an error related to time zone.  
 Not sure if it is related to this PR [ClickHouse/pull/11827](https://github.com/ClickHouse/ClickHouse/pull/11827/files)
 ## 3 Start a temp container

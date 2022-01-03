@@ -29,6 +29,7 @@
         <postgresql.jdbc.version>42.3.1</postgresql.jdbc.version>
         <dbcp2.version>2.9.0</dbcp2.version>
         <jedis.version>4.0.0</jedis.version>
+        <clickhouse.version>0.3.2</clickhouse.version>
         <junit.version>4.13.2</junit.version>
         <junit.jupiter.version>5.8.2</junit.jupiter.version>
         <assertj.version>3.20.2</assertj.version>
@@ -79,6 +80,11 @@
                 <groupId>org.apache.commons</groupId>
                 <artifactId>commons-dbcp2</artifactId>
                 <version>${dbcp2.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.clickhouse</groupId>
+                <artifactId>clickhouse-jdbc</artifactId>
+                <version>${clickhouse.version}</version>
             </dependency>
             <!-- redis -->
             <dependency>
