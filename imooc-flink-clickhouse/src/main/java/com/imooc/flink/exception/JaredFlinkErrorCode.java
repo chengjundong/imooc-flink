@@ -11,4 +11,5 @@ public enum JaredFlinkErrorCode {
     JSON_SERIALIZATION_ERROR,
     JSON_DESERIALIZATION_ERROR,
     TEST_ERROR,
+    HTTP_CLIENT_ERROR,
 }
