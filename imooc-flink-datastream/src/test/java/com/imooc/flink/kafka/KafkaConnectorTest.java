@@ -13,8 +13,8 @@ public class KafkaConnectorTest {
         StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
 
         Properties properties = new Properties();
-        properties.setProperty("bootstrap.servers", "192.168.10.124:57139");
-        DataStream<String> stream = env.addSource(new FlinkKafkaConsumer<>("test004-20211211", new SimpleStringSchema(), properties));
+        properties.setProperty("bootstrap.servers", "192.168.10.106:61861");
+        DataStream<String> stream = env.addSource(new FlinkKafkaConsumer<>("jared-test-20220115-6", new SimpleStringSchema(), properties));
 
         stream.print();
 

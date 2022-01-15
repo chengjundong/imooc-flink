@@ -1,13 +1,11 @@
 # Run Flink in Docker
 [Run flink in Docker](https://ci.apache.org/projects/flink/flink-docs-master/docs/deployment/resource-providers/standalone/docker/)
 # Run Kafka
-go to kafka-docker folder  
-run `docker-compose up`  
-you might need change the `KAFKA_ADVERTISED_HOST_NAME`, use `ping host.docker.internal`  
-start kafka manager  
-`docker run -it --rm -p 9000:9000 -e ZK_HOSTS="192.168.1.18:2181" -e APPLICATION_SECRET=letmein sheepkiller/kafka-manager`  
-ZK_HOSTS might be changed
-access kafka manager: http://192.168.1.18:9000/
+1. go to kafka-docker folder in local
+2. use `ping host.docker.internal` to get docker IP
+3. change `KAFKA_ADVERTISED_HOST_NAME` in docker-compose.yml
+4. run `docker-compose up`  
+5. start kafka manager `docker run -it --rm -p 9000:9000 -e ZK_HOSTS="${host.docker.internal}:2181" -e APPLICATION_SECRET=letmein sheepkiller/kafka-manager`
 ## Create topic
 ```powershell
 # use powershell script "create-topic.ps1"

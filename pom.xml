@@ -34,6 +34,7 @@
         <junit.jupiter.version>5.8.2</junit.jupiter.version>
         <assertj.version>3.20.2</assertj.version>
         <mockito.version>4.2.0</mockito.version>
+        <kafka.client.version>3.0.0</kafka.client.version>
     </properties>
 
     <dependencyManagement>
@@ -103,6 +104,17 @@
                 <groupId>com.fasterxml.jackson.core</groupId>
                 <artifactId>jackson-databind</artifactId>
                 <version>${jackson.version}</version>
+            </dependency>
+            <!-- kafka -->
+            <dependency>
+                <groupId>org.apache.kafka</groupId>
+                <artifactId>kafka_2.13</artifactId>
+                <version>${kafka.client.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.kafka</groupId>
+                <artifactId>kafka-clients</artifactId>
+                <version>${kafka.client.version}</version>
             </dependency>
             <!-- test -->
             <dependency>
