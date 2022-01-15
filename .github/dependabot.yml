@@ -1,0 +1,13 @@
+# enable dependabot to automatically update dependency lib
+
+version: 2
+updates:
+  - package-ecosystem: maven
+    directory: /
+    schedule:
+      interval: daily
+    allow:
+      - dependency-type: production
+    assignees:
+      - chengjundong
+    target-branch: main

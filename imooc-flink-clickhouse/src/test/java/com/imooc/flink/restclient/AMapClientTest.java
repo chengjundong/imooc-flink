@@ -3,6 +3,11 @@ package com.imooc.flink.restclient;
 import com.imooc.flink.domain.IPInfo;
 import org.junit.jupiter.api.Test;
 
+import java.net.http.HttpResponse;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Future;
+
 import static org.assertj.core.api.Assertions.*;
 
 /**
@@ -37,6 +42,21 @@ public class AMapClientTest {
 
         assertThat(ipInfo).isNotNull()
                 .extracting(IPInfo::getStatus, IPInfo::getCountry, IPInfo::getProvince, IPInfo::getCity, IPInfo::getDistrict, IPInfo::getIsp)
-                .containsExactly("1", "中国", "北京市", "北京市", "朝阳区", "中国联通");
+                .containsExactly("1", "中国", "北京市", "北京市", "朝阳区", "联通");
+    }
+
+    @Test
+    public void getAsync_IP_SuccessResponse() throws Exception {
+        String url = "https://restapi.amap.com/v5/ip?ip=114.247.50.2&key=60bc95cdcb4bd227934ef81899e2df8c&type=4";
+
+        final CompletableFuture<HttpResponse<String>> future = client.getAsync(url);
+
+        final HttpResponse<String> response = future.get();
+
+        final IPInfo ipInfo = client.getEntity(response, IPInfo.class);
+
+        assertThat(ipInfo).isNotNull()
+                .extracting(IPInfo::getStatus, IPInfo::getCountry, IPInfo::getProvince, IPInfo::getCity, IPInfo::getDistrict, IPInfo::getIsp)
+                .containsExactly("1", "中国", "北京市", "北京市", "朝阳区", "联通");
     }
 }
