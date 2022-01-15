@@ -8,6 +8,8 @@ updates:
       interval: daily
     allow:
       - dependency-type: production
+    ignore:
+      - dependency-name: "*flink*"
     assignees:
       - chengjundong
     target-branch: main
