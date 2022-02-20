@@ -4,9 +4,12 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.imooc.flink.pojo.UserAccountBalance;
 import com.imooc.flink.socket.MySocketServer;
 import com.imooc.flink.socket.NumberSocketDataGenerator;
+import com.imooc.flink.socket.VideoGameSocketDataGenerator;
 import com.imooc.flink.socket.UserBalanceSocketDataGenerator;
+import org.apache.flink.api.common.functions.AggregateFunction;
 import org.apache.flink.api.common.functions.MapFunction;
 import org.apache.flink.api.common.functions.ReduceFunction;
+import org.apache.flink.api.java.tuple.Tuple2;
 import org.apache.flink.api.java.tuple.Tuple3;
 import org.apache.flink.streaming.api.TimeCharacteristic;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
@@ -16,6 +19,7 @@ import org.apache.flink.streaming.api.windowing.time.Time;
 import org.apache.flink.streaming.api.windowing.windows.TimeWindow;
 import org.apache.flink.util.Collector;
 
+import java.math.BigDecimal;
 import java.util.*;
 
 /**
@@ -27,8 +31,10 @@ public class WindowAppTest {
         StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
 
 //        nonKeyWindowWithDeprecatedFunction(env);
+        keyedWindow_Agg(env);
 //        keyedWindow_UserAccountBalance(env);
-        keyedWindow_Lowest3_UserAccountBalance(env);
+//        keyedWindow_Lowest3_UserAccountBalance(env);
+//        keyedWindow_Lowest3_SumUserAccountBalance(env);
 
         env.execute("WindowAppTest");
     }
@@ -52,6 +58,82 @@ public class WindowAppTest {
                 })
                 .timeWindowAll(Time.seconds(1l))
                 .sum(0)
+                .print();
+    }
+
+    /**
+     * Keyed window + agg function: The most sold video games per platform in each 1s.
+     *
+     * @param env execution env
+     */
+    private static void keyedWindow_Agg(StreamExecutionEnvironment env) {
+        new Thread(new MySocketServer(new VideoGameSocketDataGenerator())).start();
+
+        env.setStreamTimeCharacteristic(TimeCharacteristic.ProcessingTime);
+        env.socketTextStream("127.0.0.1", 9090)
+                .map(new MapFunction<String, Tuple3<String, String, Integer>>() {
+                    @Override
+                    public Tuple3<String, String, Integer> map(String s) throws Exception {
+                        final String[] ss = s.split(",");
+                        return Tuple3.of(ss[0], ss[1], 1);
+                    }
+                })
+                .keyBy(t3 -> t3.f0)
+                .window(TumblingProcessingTimeWindows.of(Time.seconds(1L)))
+                .aggregate(new AggregateFunction<Tuple3<String, String, Integer>, Map<String, Integer>, Tuple3<String, String, Integer>>() {
+
+                    private String platform = "";
+
+                    @Override
+                    public Map<String, Integer> createAccumulator() {
+                        return new HashMap<>();
+                    }
+
+                    @Override
+                    public Map<String, Integer> add(Tuple3<String, String, Integer> value, Map<String, Integer> accumulator) {
+                        if("".equals(platform)) {
+                            platform = value.f0;
+                        }
+                        if(accumulator.containsKey(value.f1)) {
+                            accumulator.put(value.f1, accumulator.get(value.f1) + value.f2);
+                        } else {
+                            accumulator.put(value.f1, value.f2);
+                        }
+                        return accumulator;
+                    }
+
+                    @Override
+                    public Tuple3<String, String, Integer> getResult(Map<String, Integer> accumulator) {
+                        String mostSoldName = "";
+                        int mostSoldNum = Integer.MIN_VALUE;
+                        for (Map.Entry<String, Integer> e : accumulator.entrySet()) {
+                            if("".endsWith(mostSoldName)) {
+                                mostSoldName = e.getKey();
+                                mostSoldNum = e.getValue();
+                            } else if(mostSoldNum < e.getValue()) {
+                                mostSoldName = e.getKey();
+                                mostSoldNum = e.getValue();
+                            }
+                        }
+                        return Tuple3.of(platform, mostSoldName, mostSoldNum);
+                    }
+
+                    @Override
+                    public Map<String, Integer> merge(Map<String, Integer> a, Map<String, Integer> b) {
+                        // create a result based A
+                        final HashMap<String, Integer> result = new HashMap<>(a);
+                        // if B.key exists in result, then get value & sum them, finally, put the sum result back to result
+                        // if B.key doesn't exist in result, then put B.key + B.value in result
+                        for (Map.Entry<String, Integer> e : b.entrySet()) {
+                            if(result.containsKey(e.getKey())) {
+                                result.put(e.getKey(), result.get(e.getKey()) + e.getValue());
+                            } else {
+                                result.put(e.getKey(), e.getValue());
+                            }
+                        }
+                        return result;
+                    }
+                })
                 .print();
     }
 
@@ -123,6 +205,7 @@ public class WindowAppTest {
                             Context context,
                             Iterable<UserAccountBalance> elements,
                             Collector<UserAccountBalance> out) throws Exception {
+            System.out.println(">>>>>>>>>>>>>>> process function#" + Thread.currentThread().getId());
             // find the lowest balance per each user in same unitId
             Map<Long, UserAccountBalance> lowestBalancePerUser = new HashMap<>();
             elements.forEach(bal -> {
@@ -144,7 +227,7 @@ public class WindowAppTest {
                     return o1.getBalanceInBigDecimal().subtract(o2.getBalanceInBigDecimal()).intValue();
                 }
             });
-            for (int i=0; i<3 || i<lowest3.size(); i++) {
+            for (int i=0; i<3 && i<lowest3.size(); i++) {
                 out.collect(lowest3.get(i));
             }
         }
