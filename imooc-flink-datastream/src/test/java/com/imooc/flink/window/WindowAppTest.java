@@ -2,24 +2,21 @@ package com.imooc.flink.window;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.imooc.flink.pojo.UserAccountBalance;
-import com.imooc.flink.socket.MySocketServer;
-import com.imooc.flink.socket.NumberSocketDataGenerator;
-import com.imooc.flink.socket.VideoGameSocketDataGenerator;
-import com.imooc.flink.socket.UserBalanceSocketDataGenerator;
+import com.imooc.flink.socket.*;
 import org.apache.flink.api.common.functions.AggregateFunction;
 import org.apache.flink.api.common.functions.MapFunction;
 import org.apache.flink.api.common.functions.ReduceFunction;
-import org.apache.flink.api.java.tuple.Tuple2;
 import org.apache.flink.api.java.tuple.Tuple3;
 import org.apache.flink.streaming.api.TimeCharacteristic;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 import org.apache.flink.streaming.api.functions.windowing.ProcessWindowFunction;
+import org.apache.flink.streaming.api.windowing.assigners.ProcessingTimeSessionWindows;
+import org.apache.flink.streaming.api.windowing.assigners.SlidingProcessingTimeWindows;
 import org.apache.flink.streaming.api.windowing.assigners.TumblingProcessingTimeWindows;
 import org.apache.flink.streaming.api.windowing.time.Time;
 import org.apache.flink.streaming.api.windowing.windows.TimeWindow;
 import org.apache.flink.util.Collector;
 
-import java.math.BigDecimal;
 import java.util.*;
 
 /**
@@ -32,6 +29,7 @@ public class WindowAppTest {
 
 //        nonKeyWindowWithDeprecatedFunction(env);
         keyedWindow_Agg(env);
+//        nonKeyWindow_SessionWindow(env);
 //        keyedWindow_UserAccountBalance(env);
 //        keyedWindow_Lowest3_UserAccountBalance(env);
 //        keyedWindow_Lowest3_SumUserAccountBalance(env);
@@ -62,7 +60,8 @@ public class WindowAppTest {
     }
 
     /**
-     * Keyed window + agg function: The most sold video games per platform in each 1s.
+     * Keyed window + agg function: The most sold video games per platform
+     * Frequency: In every 1s, account for the previous 5s selling result
      *
      * @param env execution env
      */
@@ -79,7 +78,7 @@ public class WindowAppTest {
                     }
                 })
                 .keyBy(t3 -> t3.f0)
-                .window(TumblingProcessingTimeWindows.of(Time.seconds(1L)))
+                .window(SlidingProcessingTimeWindows.of(Time.seconds(5), Time.seconds(1)))
                 .aggregate(new AggregateFunction<Tuple3<String, String, Integer>, Map<String, Integer>, Tuple3<String, String, Integer>>() {
 
                     private String platform = "";
@@ -231,5 +230,27 @@ public class WindowAppTest {
                 out.collect(lowest3.get(i));
             }
         }
+    }
+
+    /**
+     * non-key window + session window, gap between two windows is 1s
+     *
+     * @param env execution env
+     */
+    private static void nonKeyWindow_SessionWindow(StreamExecutionEnvironment env) {
+        new Thread(new MySocketServer(new NumberSocketDataGeneratorWithinSleep())).start();
+
+        env.setStreamTimeCharacteristic(TimeCharacteristic.ProcessingTime);
+        env.socketTextStream("127.0.0.1", 9090)
+                .map(new MapFunction<String, Long>() {
+
+                    @Override
+                    public Long map(String s) throws Exception {
+                        return Long.valueOf(s);
+                    }
+                })
+                .windowAll(ProcessingTimeSessionWindows.withGap(Time.seconds(1)))
+                .sum(0)
+                .print();
     }
 }
