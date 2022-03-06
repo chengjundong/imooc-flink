@@ -9,7 +9,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 
 /**
- * @author jucheng
+ * @author jared
  * @since 2021/12/15
  */
 public class DatabaseWordCountSink extends AbstractRichFunction implements SinkFunction<Tuple2<String, Integer>> {

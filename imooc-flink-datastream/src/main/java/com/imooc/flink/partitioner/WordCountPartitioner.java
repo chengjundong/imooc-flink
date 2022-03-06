@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * @author jucheng
+ * @author jared
  * @since 2021/12/13
  */
 public class WordCountPartitioner implements Partitioner<String> {

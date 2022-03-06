@@ -14,7 +14,7 @@ import java.util.concurrent.CompletableFuture;
 /**
  * To parse IP and map data to Tuple in asynchronization mode
  *
- * @author jucheng
+ * @author jared
  * @since 2022/1/15
  */
 public abstract class BaseAsyncIpMappingFunction<T> extends RichAsyncFunction<Access, T> {

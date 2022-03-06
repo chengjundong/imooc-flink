@@ -8,7 +8,7 @@ import java.net.Socket;
 import java.util.concurrent.ThreadLocalRandom;
 
 /**
- * @author jucheng
+ * @author jared
  */
 public class SocketServerTest {
 

@@ -9,7 +9,7 @@ import ru.yandex.clickhouse.settings.ClickHouseProperties;
 import java.sql.ResultSet;
 
 /**
- * @author jucheng
+ * @author jared
  * @since 2022/1/3
  */
 public class ClickHouseTest {

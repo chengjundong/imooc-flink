@@ -12,7 +12,7 @@ import org.apache.flink.util.Collector;
 /**
  * Batch word-count application
  *
- * @author jucheng
+ * @author jared
  */
 public class BatchWordCountApp {
 

@@ -22,7 +22,7 @@ import java.util.StringJoiner;
 /**
  * Analyze user behavior by operating system
  *
- * @author jucheng
+ * @author jared
  * @version 1
  * @since 2022/1/3
  */

@@ -6,7 +6,7 @@ import org.apache.flink.api.java.tuple.Tuple2;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 
 /**
- * @author jucheng
+ * @author jared
  * @since 2021/12/13
  */
 public class WordCountPartitionerTest {

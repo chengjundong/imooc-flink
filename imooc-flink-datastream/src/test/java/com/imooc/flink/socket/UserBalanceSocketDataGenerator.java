@@ -7,7 +7,7 @@ import java.text.DecimalFormat;
 import java.util.concurrent.ThreadLocalRandom;
 
 /**
- * @author jucheng
+ * @author jared
  * @since 2022/2/12
  */
 public class UserBalanceSocketDataGenerator implements SocketDataGenerator{

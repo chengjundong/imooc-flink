@@ -7,7 +7,7 @@ import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 
 /**
- * @author jucheng
+ * @author jared
  * @since 2022/1/3
  */
 public class AccessTest extends PojoTest<Access> {

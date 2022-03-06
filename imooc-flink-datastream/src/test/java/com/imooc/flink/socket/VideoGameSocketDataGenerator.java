@@ -4,7 +4,7 @@ import java.util.StringJoiner;
 import java.util.concurrent.ThreadLocalRandom;
 
 /**
- * @author jucheng
+ * @author jared
  * @since 2022/2/20
  */
 public class VideoGameSocketDataGenerator implements SocketDataGenerator {

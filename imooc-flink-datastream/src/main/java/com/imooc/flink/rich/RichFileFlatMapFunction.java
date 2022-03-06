@@ -7,7 +7,7 @@ import org.apache.flink.configuration.Configuration;
 import org.apache.flink.util.Collector;
 
 /**
- * @author jucheng
+ * @author jared
  * @since 2021/12/11
  */
 public class RichFileFlatMapFunction extends RichFlatMapFunction<String, Tuple2<String, Integer>> {

@@ -3,7 +3,7 @@ package com.imooc.flink.domain;
 /**
  * IP Information as AMAP data structure
  *
- * @author jucheng
+ * @author jared
  * @since 2022/1/6
  * @see <a href="https://lbs.amap.com/api/webservice/guide/api/ipconfig">AMAP IP Config API</a>
  */

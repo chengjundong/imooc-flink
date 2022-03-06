@@ -11,7 +11,7 @@ import java.util.concurrent.Future;
 import static org.assertj.core.api.Assertions.*;
 
 /**
- * @author jucheng
+ * @author jared
  * @since 2022/1/6
  */
 public class AMapClientTest {

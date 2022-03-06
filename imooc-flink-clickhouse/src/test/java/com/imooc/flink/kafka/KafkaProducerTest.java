@@ -21,7 +21,7 @@ import java.util.Properties;
 import java.util.concurrent.ThreadLocalRandom;
 
 /**
- * @author jucheng
+ * @author jared
  * @since 2022/1/15
  */
 public class KafkaProducerTest {

@@ -24,7 +24,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * To analyze user count by province and channel
  *
- * @author jucheng
+ * @author jared
  * @since 2022/1/15
  */
 public class UserProvinceChannelAppV1 {

@@ -15,7 +15,7 @@ import org.apache.flink.streaming.api.windowing.time.Time;
 import java.time.Duration;
 
 /**
- * @author jucheng
+ * @author jared
  * @since 2022/2/20
  */
 public class SlidingWindowWatermarkApp {

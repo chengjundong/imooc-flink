@@ -6,7 +6,7 @@ import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.TimeUnit;
 
 /**
- * @author jucheng
+ * @author jared
  * @since 2022/2/20
  */
 public class TimeWordSocketDataGenerator implements SocketDataGenerator{

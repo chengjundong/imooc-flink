@@ -5,7 +5,7 @@ import org.apache.flink.streaming.api.functions.source.SourceFunction;
 import java.util.concurrent.ThreadLocalRandom;
 
 /**
- * @author jucheng
+ * @author jared
  * @since 2021/12/11
  */
 public class WordCountSource implements SourceFunction<String> {

@@ -10,7 +10,7 @@ import org.apache.flink.streaming.connectors.kafka.FlinkKafkaConsumer;
 import java.util.Properties;
 
 /**
- * @author jucheng
+ * @author jared
  * @since 12/11/2021
  */
 public class KafkaWordCountTest {

@@ -11,7 +11,7 @@ import java.util.Collections;
 import java.util.Properties;
 
 /**
- * @author jucheng
+ * @author jared
  * @since 2022/1/15
  */
 public class KafkaConsumerTest {

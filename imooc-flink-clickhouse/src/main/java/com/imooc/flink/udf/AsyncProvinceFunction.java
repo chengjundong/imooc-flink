@@ -7,7 +7,7 @@ import org.apache.flink.api.java.tuple.Tuple3;
 /**
  * To get province information in asynchronization mode
  *
- * @author jucheng
+ * @author jared
  * @since 2022/1/15
  */
 public class AsyncProvinceFunction extends BaseAsyncIpMappingFunction<Tuple3<String, Integer, Long>> {

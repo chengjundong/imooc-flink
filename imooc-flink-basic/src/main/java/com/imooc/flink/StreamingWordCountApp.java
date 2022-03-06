@@ -17,7 +17,7 @@ import org.apache.flink.util.Collector;
  *     4. output to console
  * </pre>
  *
- * @author jucheng
+ * @author jared
  */
 public class StreamingWordCountApp {
 

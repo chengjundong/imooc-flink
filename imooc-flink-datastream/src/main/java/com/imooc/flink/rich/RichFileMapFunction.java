@@ -6,7 +6,7 @@ import org.apache.flink.api.java.tuple.Tuple2;
 import org.apache.flink.configuration.Configuration;
 
 /**
- * @author jucheng
+ * @author jared
  * @since 2021/12/11
  */
 public class RichFileMapFunction extends RichMapFunction<String, Tuple2<String, Integer>> {

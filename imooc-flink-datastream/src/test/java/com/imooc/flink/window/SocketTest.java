@@ -6,7 +6,7 @@ import java.io.InputStreamReader;
 import java.net.Socket;
 
 /**
- * @author jucheng
+ * @author jared
  */
 public class SocketTest {
 

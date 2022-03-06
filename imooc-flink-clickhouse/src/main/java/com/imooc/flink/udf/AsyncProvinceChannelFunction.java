@@ -7,7 +7,7 @@ import org.apache.flink.api.java.tuple.Tuple4;
 /**
  * Map access & ip to channel & province combination
  *
- * @author jucheng
+ * @author jared
  * @since 2022/1/15
  */
 public class AsyncProvinceChannelFunction extends BaseAsyncIpMappingFunction<Tuple4<String, String, Integer, Long>> {

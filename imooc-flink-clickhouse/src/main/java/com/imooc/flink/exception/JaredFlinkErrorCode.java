@@ -3,7 +3,7 @@ package com.imooc.flink.exception;
 /**
  * Error code in this project
  *
- * @author jucheng
+ * @author jared
  * @since 2022/1/3
  */
 public enum JaredFlinkErrorCode {

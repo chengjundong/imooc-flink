@@ -6,6 +6,8 @@ import com.imooc.flink.socket.*;
 import org.apache.flink.api.common.functions.AggregateFunction;
 import org.apache.flink.api.common.functions.MapFunction;
 import org.apache.flink.api.common.functions.ReduceFunction;
+import org.apache.flink.api.common.restartstrategy.RestartStrategies;
+import org.apache.flink.api.common.restartstrategy.RestartStrategies.FixedDelayRestartStrategyConfiguration;
 import org.apache.flink.api.java.tuple.Tuple3;
 import org.apache.flink.streaming.api.TimeCharacteristic;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
@@ -20,17 +22,22 @@ import org.apache.flink.util.Collector;
 import java.util.*;
 
 /**
- * @author jucheng
+ * @author jared
  */
 public class WindowAppTest {
 
     public static void main(String[] args) throws Exception {
         StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
 
+        env.enableCheckpointing(10000);
+
+        // restart 3 times, interval is 3s
+//        env.setRestartStrategy(RestartStrategies.fixedDelayRestart(3, org.apache.flink.api.common.time.Time.seconds(3)));
+
 //        nonKeyWindowWithDeprecatedFunction(env);
-        keyedWindow_Agg(env);
+//        keyedWindow_Agg(env);
 //        nonKeyWindow_SessionWindow(env);
-//        keyedWindow_UserAccountBalance(env);
+        keyedWindow_UserAccountBalance(env);
 //        keyedWindow_Lowest3_UserAccountBalance(env);
 //        keyedWindow_Lowest3_SumUserAccountBalance(env);
 

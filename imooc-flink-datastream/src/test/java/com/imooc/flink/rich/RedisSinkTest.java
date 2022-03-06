@@ -8,7 +8,7 @@ import org.apache.flink.streaming.api.datastream.SingleOutputStreamOperator;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 
 /**
- * @author jucheng
+ * @author jared
  * @since 2021/12/25
  */
 public class RedisSinkTest {

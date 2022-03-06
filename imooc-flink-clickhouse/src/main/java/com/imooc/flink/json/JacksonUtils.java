@@ -12,7 +12,7 @@ import static com.imooc.flink.exception.JaredFlinkErrorCode.JSON_DESERIALIZATION
 import static com.imooc.flink.exception.JaredFlinkErrorCode.JSON_SERIALIZATION_ERROR;
 
 /**
- * @author jucheng
+ * @author jared
  * @since 2022/1/3
  */
 public class JacksonUtils {

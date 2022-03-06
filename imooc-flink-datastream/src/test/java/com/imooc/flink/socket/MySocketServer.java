@@ -6,7 +6,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 
 /**
- * @author jucheng
+ * @author jared
  * @since 2022/2/12
  */
 public class MySocketServer implements Runnable {

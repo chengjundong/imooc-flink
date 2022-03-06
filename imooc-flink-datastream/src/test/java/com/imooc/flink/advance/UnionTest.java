@@ -4,7 +4,7 @@ import org.apache.flink.streaming.api.datastream.DataStreamSource;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 
 /**
- * @author jucheng
+ * @author jared
  * @since 2021/12/11
  */
 public class UnionTest {

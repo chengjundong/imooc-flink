@@ -9,7 +9,7 @@ import java.util.Scanner;
 /**
  * Socket data sender
  *
- * @author jucheng
+ * @author jared
  */
 public class SocketDataSender {
 

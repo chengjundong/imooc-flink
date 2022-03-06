@@ -12,7 +12,7 @@ import static com.imooc.flink.json.JacksonUtils.*;
 import static org.assertj.core.api.Assertions.*;
 
 /**
- * @author jucheng
+ * @author jared
  * @since 2022/1/3
  */
 public abstract class PojoTest<E> {

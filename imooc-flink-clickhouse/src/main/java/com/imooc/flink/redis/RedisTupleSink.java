@@ -19,7 +19,7 @@ import java.util.StringJoiner;
  *     localhost:6379
  * </pre>
  *
- * @author jucheng
+ * @author jared
  * @see <a href="https://cloud.tencent.com/developer/article/1379438">Win10 + Redis + DockerDesktop</a>
  * @since 2021/12/25
  */

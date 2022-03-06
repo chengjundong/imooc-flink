@@ -7,7 +7,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.math.BigDecimal;
 
 /**
- * @author jucheng
+ * @author jared
  * @since 2022/2/12
  */
 public class UserAccountBalance {

@@ -20,7 +20,7 @@ import static org.apache.flink.util.Preconditions.checkNotNull;
 /**
  * Test how watermark generator works
  *
- * @author jucheng
+ * @author jared
  * @since 2022/2/20
  */
 public class WatermarkGeneratorApp {

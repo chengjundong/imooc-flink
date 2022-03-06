@@ -6,7 +6,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * Sleep randomly from 800ms to 2000ms, it is used to simulate data gap
  *
- * @author jucheng
+ * @author jared
  * @since 2022/2/12
  */
 public class NumberSocketDataGeneratorWithinSleep implements SocketDataGenerator{

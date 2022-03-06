@@ -5,7 +5,7 @@ import org.apache.flink.api.java.tuple.Tuple2;
 /**
  * Mapping Tuple 2 to Redis hash-set data
  *
- * @author jucheng
+ * @author jared
  * @since 2022/1/3
  */
 public class Tuple2RedisHSetData<F1, F2> implements IRedisHSetData{

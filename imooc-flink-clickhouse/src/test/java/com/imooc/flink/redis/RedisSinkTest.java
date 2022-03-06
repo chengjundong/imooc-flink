@@ -8,7 +8,7 @@ import redis.clients.jedis.Jedis;
 import static org.mockito.BDDMockito.*;
 
 /**
- * @author jucheng
+ * @author jared
  * @since 2022/1/3
  */
 public class RedisSinkTest {

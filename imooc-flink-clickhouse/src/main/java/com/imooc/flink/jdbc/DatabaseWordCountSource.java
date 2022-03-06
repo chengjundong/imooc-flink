@@ -8,7 +8,7 @@ import java.sql.ResultSet;
 import java.util.concurrent.ThreadLocalRandom;
 
 /**
- * @author jucheng
+ * @author jared
  * @since 2021/12/11
  */
 public class DatabaseWordCountSource implements ParallelSourceFunction<String> {

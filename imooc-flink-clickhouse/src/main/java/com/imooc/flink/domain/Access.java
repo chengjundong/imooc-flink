@@ -23,7 +23,7 @@ package com.imooc.flink.domain;
  *     }
  * </pre>
  *
- * @author jucheng
+ * @author jared
  * @since 2022/1/3
  */
 public class Access {

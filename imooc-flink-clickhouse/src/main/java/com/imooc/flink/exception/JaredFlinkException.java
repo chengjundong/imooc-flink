@@ -1,7 +1,7 @@
 package com.imooc.flink.exception;
 
 /**
- * @author jucheng
+ * @author jared
  * @since 2022/1/3
  */
 public class JaredFlinkException extends RuntimeException {

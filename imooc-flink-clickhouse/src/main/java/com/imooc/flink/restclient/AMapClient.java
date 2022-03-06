@@ -16,7 +16,7 @@ import java.util.concurrent.Future;
 /**
  * REST API client to call AMap API
  *
- * @author jucheng
+ * @author jared
  * @since 2022/1/6
  * @see <a href="https://lbs.amap.com/api/webservice/guide/api/ipconfig">AMAP IP Config API</a>
  */

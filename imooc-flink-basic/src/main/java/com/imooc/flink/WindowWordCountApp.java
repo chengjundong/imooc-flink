@@ -9,7 +9,7 @@ import org.apache.flink.streaming.api.windowing.time.Time;
 import org.apache.flink.util.Collector;
 
 /**
- * @author jucheng
+ * @author jared
  * @since 10/7/2021
  */
 public class WindowWordCountApp {

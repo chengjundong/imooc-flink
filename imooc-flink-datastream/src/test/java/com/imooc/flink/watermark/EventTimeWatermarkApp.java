@@ -20,7 +20,7 @@ import java.time.Duration;
 /**
  * event time + watermark
  *
- * @author jucheng
+ * @author jared
  * @since 2022/2/20
  */
 public class EventTimeWatermarkApp {

@@ -3,7 +3,7 @@ package com.imooc.flink.socket;
 import java.util.concurrent.ThreadLocalRandom;
 
 /**
- * @author jucheng
+ * @author jared
  * @since 2022/2/12
  */
 public class NumberSocketDataGenerator implements SocketDataGenerator{

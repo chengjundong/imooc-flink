@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * aid,aType,jType,cAmount,dAmount,seq,bal,unitId
  *
- * @author jucheng
+ * @author jared
  * @since 2021/12/11
  */
 public class EntryInfo extends PojoTypeInfo<Entry> {

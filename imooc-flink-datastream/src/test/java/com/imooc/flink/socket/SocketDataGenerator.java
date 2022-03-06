@@ -1,7 +1,7 @@
 package com.imooc.flink.socket;
 
 /**
- * @author jucheng
+ * @author jared
  * @since 2022/2/12
  */
 public interface SocketDataGenerator {
