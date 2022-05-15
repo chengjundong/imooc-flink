@@ -1,20 +1,18 @@
 package com.imooc.flink.window;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.Socket;
+import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 
 /**
  * @author jared
  */
 public class SocketTest {
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws Exception {
 
-        Socket socket = new Socket("127.0.0.1", 9090);
-        System.out.println(socket.isConnected());
-        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-        System.out.println(bufferedReader.readLine());
+        StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
+
+        env.socketTextStream("localhost", 9090).print();
+
+        env.execute("SocketTest");
     }
 }
