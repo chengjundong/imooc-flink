@@ -26,7 +26,7 @@
         <scala.binary.version>2.11</scala.binary.version>
         <log4j.version>2.17.1</log4j.version>
         <jackson.version>2.13.1</jackson.version>
-        <postgresql.jdbc.version>42.3.3</postgresql.jdbc.version>
+        <postgresql.jdbc.version>42.3.8</postgresql.jdbc.version>
         <dbcp2.version>2.9.0</dbcp2.version>
         <jedis.version>4.1.1</jedis.version>
         <clickhouse.version>0.3.2</clickhouse.version>
